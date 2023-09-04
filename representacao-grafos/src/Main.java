@@ -5,11 +5,10 @@ import java.util.Scanner;
 
 
 public class Main {
-
     public static void main(String[] args) throws Exception {
 
         Scanner scanner = new Scanner(System.in);
-        String filepath = "forks/graph-test-50000.txt";
+        String filepath = "forks/graph-test-100.txt";
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filepath));
         String input = bufferedReader.readLine();
         int vertices = Integer.parseInt(input.trim().split(" ")[0]);
@@ -26,7 +25,7 @@ public class Main {
             position++;
         }
 
-        //      Compacta o array origin
+        // Compacta o array origin
         pointer[1] = 1;
         for (int i = 2; i < pointer.length - 2; i++) {
             pointer[i] = getOriginPosition(i, origin);
@@ -43,12 +42,9 @@ public class Main {
         String op = scanner.next().toUpperCase();
 
         switch (op) {
-            case "I" -> {
-                System.out.println("Grau de saida: " + getVertexOutputDegree(vertex, pointer));
-            }
-            case "II" -> {
-                System.out.println("Grau de entrada: " + getVertexInputDegree(vertex, destiny));
-            }
+            case "I" -> System.out.println("Grau de saida: " + getVertexOutputDegree(vertex, pointer));
+            case "II" -> System.out.println("Grau de entrada: " + getVertexInputDegree(vertex, destiny));
+            case "III" -> System.out.println("Conjunto de sucessores: " + Arrays.toString(getVertexSuccessors(vertex, pointer, destiny)));
             default -> throw new Exception("Opcao invalida!");
         }
     }
@@ -91,7 +87,6 @@ public class Main {
         int vertexInputDegree = 0, position = 0;
         // Faz uma copia do array destiny, para nao modificar os valores originais
         int[] sortedDestiny = Arrays.copyOf(destiny, destiny.length);
-        // Para ma
         quickSort(sortedDestiny, 1, sortedDestiny.length - 1);
 
         while (sortedDestiny[position] <= vertex) {
@@ -101,6 +96,16 @@ public class Main {
         }
 
         return vertexInputDegree;
+    }
+
+    public static int[] getVertexSuccessors(int vertex, int[] pointer, int[] destiny) {
+        int[] successors = new int[getVertexOutputDegree(vertex, pointer)];
+        int startingPosition = pointer[vertex];
+
+        for (int i=0; i< successors.length; i++)
+            successors[i] = destiny[startingPosition++];
+
+        return successors;
     }
 
     /**
