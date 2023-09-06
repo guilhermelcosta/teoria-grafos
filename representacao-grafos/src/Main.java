@@ -44,7 +44,10 @@ public class Main {
         switch (op) {
             case "I" -> System.out.println("Grau de saida: " + getVertexOutputDegree(vertex, pointer));
             case "II" -> System.out.println("Grau de entrada: " + getVertexInputDegree(vertex, destiny));
-            case "III" -> System.out.println("Conjunto de sucessores: " + Arrays.toString(getVertexSuccessors(vertex, pointer, destiny)));
+            case "III" ->
+                    System.out.println("Conjunto de sucessores: " + Arrays.toString(getVertexSuccessors(vertex, pointer, destiny)));
+            case "IV" ->
+                    System.out.println("Conjunto de predecessores: " + Arrays.toString(getVertexPredecessors(vertex, pointer, origin, destiny)));
             default -> throw new Exception("Opcao invalida!");
         }
     }
@@ -56,7 +59,7 @@ public class Main {
      * @param origin array de busca
      * @return posicao inicial de um vertice no array origin
      */
-    public static int getOriginPosition(int i, int[] origin) {
+    private static int getOriginPosition(int i, int[] origin) {
         int count = 0;
         while (origin[count] != i) {
             count++;
@@ -85,7 +88,7 @@ public class Main {
     public static int getVertexInputDegree(int vertex, int[] destiny) {
 
         int vertexInputDegree = 0, position = 0;
-        // Faz uma copia do array destiny, para nao modificar os valores originais
+//        Faz uma copia do array destiny, para nao modificar os valores originais
         int[] sortedDestiny = Arrays.copyOf(destiny, destiny.length);
         quickSort(sortedDestiny, 1, sortedDestiny.length - 1);
 
@@ -99,13 +102,43 @@ public class Main {
     }
 
     public static int[] getVertexSuccessors(int vertex, int[] pointer, int[] destiny) {
+
         int[] successors = new int[getVertexOutputDegree(vertex, pointer)];
         int startingPosition = pointer[vertex];
 
-        for (int i=0; i< successors.length; i++)
+        for (int i = 0; i < successors.length; i++)
             successors[i] = destiny[startingPosition++];
 
         return successors;
+    }
+
+    public static int[] getVertexPredecessors(int vertex, int[] pointer, int[] origin, int[] destiny) {
+
+        int[] predecessors = new int[getVertexInputDegree(vertex, destiny)];
+        int predecessorsCount = 0;
+
+        for (int i = 1; i < pointer.length - 1; i++) {
+
+//            todo: quebrar loop caso ja tenha achado o numero de predecessores = grau de saida
+
+//            Essa verificacao so pode ser inserida, pois o grafo e simples
+//            Caso ele nao fosse simples, e tivesse ciclos, todos os vertices deveriam ser verificadas
+            if (i == vertex)
+                continue;
+
+            int nextPosition = pointer[i];
+            int lastPosition = pointer[i + 1];
+
+            for (int j = nextPosition; j < lastPosition; j++) {
+                if (destiny[j] == vertex) {
+                    predecessors[predecessorsCount++] = origin[j];
+//                    Este break pode ser adicionado pelo mesmo motivo informado acima
+//                    Uma vez que nao existem ciclos no grafo, um vertice nao pode ser predecessor mais de uma vez de outro
+                    break;
+                }
+            }
+        }
+        return predecessors;
     }
 
     /**
@@ -149,6 +182,7 @@ public class Main {
      * @return novo indice do pivo
      */
     private static int partition(int[] arr, int low, int high) {
+
         int pivot = arr[high];
         int i = low - 1;
 
@@ -158,7 +192,6 @@ public class Main {
                 swap(arr, i, j);
             }
         }
-
         swap(arr, i + 1, high);
         return i + 1;
     }
