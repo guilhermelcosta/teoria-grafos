@@ -114,12 +114,15 @@ public class Main {
 
     public static int[] getVertexPredecessors(int vertex, int[] pointer, int[] origin, int[] destiny) {
 
-        int[] predecessors = new int[getVertexInputDegree(vertex, destiny)];
+        int inputDegree = getVertexInputDegree(vertex, destiny);
+        int[] predecessors = new int[inputDegree];
         int predecessorsCount = 0;
 
         for (int i = 1; i < pointer.length - 1; i++) {
 
-//            todo: quebrar loop caso ja tenha achado o numero de predecessores = grau de saida
+//            Se ja tiver encontrado a quantidade de predecessores previsto, finaliza o loop
+            if (predecessorsCount == inputDegree)
+                break;
 
 //            Essa verificacao so pode ser inserida, pois o grafo e simples
 //            Caso ele nao fosse simples, e tivesse ciclos, todos os vertices deveriam ser verificadas
