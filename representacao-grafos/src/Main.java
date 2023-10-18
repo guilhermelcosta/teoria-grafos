@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /*Todos os codigo contidos neste programa foram desenvolvidos por Guilherme Costa*/
-/*Para ajustes pontuais e duvidas, em geral, foi utilizado o AI Assistant do IntelliJ*/
+/*Para ajustes pontuais, foi utilizado o AI Assistant do IntelliJ*/
 /*Aluno: Guilherme Lage da Costa*/
 /*Matricula: 792939*/
 /*Data de entrega da atividade: 10/09/2023*/
@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         Scanner scanner = new Scanner(System.in);
-        String filepath = "graphs/graph-test-100.txt";
+        String filepath = "graphs/graph-test-50000.txt";
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filepath));
         String input = bufferedReader.readLine();
         int vertices = Integer.parseInt(input.trim().split(" ")[0]);

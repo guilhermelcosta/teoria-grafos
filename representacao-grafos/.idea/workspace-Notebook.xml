@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c8dcb43b-6688-4c66-a620-488d3df2ff33" name="Changes" comment="docs: add grafos de teste">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;guilhermelcosta&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="99317aeb-1a11-4cb5-aec3-6b01aca53019" />
+        <option name="url" value="https://github.com/guilhermelcosta/teoria-grafos.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2UljLM1i3dqXz9lIMuziuUer7bk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c8dcb43b-6688-4c66-a620-488d3df2ff33" name="Changes" comment="" />
+      <created>1693521005768</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1693521005768</updated>
+      <workItem from="1693521007032" duration="9308000" />
+      <workItem from="1693598847343" duration="140000" />
+      <workItem from="1693670546019" duration="2964000" />
+      <workItem from="1693751727865" duration="1466000" />
+      <workItem from="1693753380202" duration="3065000" />
+      <workItem from="1693762783179" duration="844000" />
+      <workItem from="1693818365053" duration="2926000" />
+      <workItem from="1693827734614" duration="347000" />
+      <workItem from="1693868852644" duration="128000" />
+      <workItem from="1693868993928" duration="57000" />
+      <workItem from="1693952537676" duration="131000" />
+      <workItem from="1693957883550" duration="4876000" />
+      <workItem from="1693964692831" duration="343000" />
+      <workItem from="1694033636642" duration="5822000" />
+      <workItem from="1694126293245" duration="613000" />
+      <workItem from="1694253428888" duration="59000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat: adicionado metodo quicksort e calculo de grau de entrada">
+      <option name="closed" value="true" />
+      <created>1693756425750</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1693756425750</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: adicionado metodo de conjunto de sucessores">
+      <option name="closed" value="true" />
+      <created>1693822996795</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1693822996795</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: adicionado metodo de conjunto de predecessores">
+      <option name="closed" value="true" />
+      <created>1693961940119</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1693961940119</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: adicionado condicao de quebra de loop">
+      <option name="closed" value="true" />
+      <created>1693962748211</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1693962748211</updated>
+    </task>
+    <task id="LOCAL-00005" summary="refactor: refatoracao geral do codigo">
+      <option name="closed" value="true" />
+      <created>1694039390285</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1694039390285</updated>
+    </task>
+    <task id="LOCAL-00006" summary="docs: add grafos de teste">
+      <option name="closed" value="true" />
+      <created>1694039408800</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1694039408800</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: adicionado metodo quicksort e calculo de grau de entrada" />
+    <MESSAGE value="feat: adicionado metodo de conjunto de sucessores" />
+    <MESSAGE value="feat: adicionado metodo de conjunto de predecessores" />
+    <MESSAGE value="feat: adicionado condicao de quebra de loop" />
+    <MESSAGE value="refactor: refatoracao geral do codigo" />
+    <MESSAGE value="docs: add grafos de teste" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs: add grafos de teste" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="sortedDestiny[position]" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
