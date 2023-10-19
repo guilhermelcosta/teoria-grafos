@@ -2,9 +2,9 @@ package entities;
 
 public class Vertex {
 
-    private long id;
+    private int id;
 
-    public Vertex(long id) {
+    public Vertex(int id) {
         this.id = id;
     }
 
@@ -12,11 +12,11 @@ public class Vertex {
         this.id = 0;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 }
