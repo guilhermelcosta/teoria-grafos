@@ -1,6 +1,8 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class Graph {
@@ -8,69 +10,115 @@ public class Graph {
     List<Vertex> vertices;
     List<Edge> edges;
 
+    /**
+     * Construtor padrao do grafo
+     *
+     * @param vertices vertices do grafo
+     * @param edges    arestas do grafo
+     */
     public Graph(List<Vertex> vertices, List<Edge> edges) {
         this.vertices = vertices;
         this.edges = edges;
     }
 
+    /**
+     * Imprime todas as arestas do grafo no formato "[origem] -> [destino]"
+     */
     public void print() {
         edges.forEach(edge -> System.out.println(edge.getOrigin().getId() + " -> " + edge.getDestiny().getId()));
     }
 
-    public void dfsAux() {
+    /**
+     * Busca em profundidade (metodo publico chamado pelo usuario)
+     */
+    public void dfs() {
 
-        /*todo: melhorar isso aqui*/
         int t = 0;
-        int[] startTime = new int[vertices.size() + 1];
-        int[] endTime = new int[vertices.size() + 1];
-        Vertex[] father = new Vertex[vertices.size() + 1];
+        int tableSize = vertices.size() + 1;
+        var startTime = new int[tableSize];
+        var endTime = new int[tableSize];
+        var father = new Vertex[tableSize];
 
-        /*todo: melhorar isso aqui*/
-        for (Vertex vertex : vertices) {
-            startTime[vertex.getId()] = 0;
-            endTime[vertex.getId()] = 0;
-            father[vertex.getId()] = null;
-        }
+        Arrays.fill(startTime, 0);
+        Arrays.fill(endTime, 0);
+        Arrays.fill(father, null);
 
         for (Vertex vertex : vertices)
             if (startTime[vertex.getId()] == 0)
                 dfs(t, startTime, endTime, father, vertex);
     }
 
-    private void dfs(int t, int[] td, int[] tt, Vertex[] father, Vertex vertex) {
+    /**
+     * Busca em profundidade (algoritmo de busca)
+     * Foi utilizado o algoritmo disponibilizado pelo prof. Zenilton no material da disciplina
+     *
+     * @param t         tempo
+     * @param startTime array com o tempo de inicio de cada vertice
+     * @param endTime   array com o tempo de termino de cada vertice
+     * @param father    array com o pai (predecessor) de cada vertice
+     * @param vertex    raiz da busca
+     */
+    private void dfs(int t, int[] startTime, int[] endTime, Vertex[] father, Vertex vertex) {
 
-        t++;
-        td[vertex.getId()] = t;
-        List<Edge> outgoingEdges = getOutgoingEdges(vertex);
+        startTime[vertex.getId()] = ++t;
+
+        List<Edge> outgoingEdges = getOutgoingEdges(vertex)
+                .stream()
+                .sorted(Comparator.comparingInt(edge -> edge.getDestiny().getId()))
+                .toList();
         List<Vertex> vertexSuccessors = outgoingEdges
                 .stream()
                 .map(Edge::getDestiny)
                 .toList();
 
-        /*todo: melhorar isso de count*/
-        int count = 0;
-
         for (Vertex w : vertexSuccessors) {
-            count++;
-            if (td[w.getId()] == 0) {
-                Edge edge =  outgoingEdges.get(count);
-                edge.setClassification("Arvore");
+            if (startTime[w.getId()] == 0) {
+                classifyEdge(w, outgoingEdges, "Arvore");
                 father[w.getId()] = vertex;
-                dfs(t, td, tt, father, w);
+                dfs(t, startTime, endTime, father, w);
+            } else {
+                if (endTime[w.getId()] == 0)
+                    classifyEdge(w, outgoingEdges, "Retorno");
+                else {
+                    if (startTime[vertex.getId()] < endTime[w.getId()])
+                        classifyEdge(w, outgoingEdges, "Avanco");
+                    else
+                        classifyEdge(w, outgoingEdges, "Cruzamento");
+                }
             }
         }
+        endTime[vertex.getId()] = ++t;
 
-
+        //        if (outgoingEdges.stream().allMatch(edge -> edge.getClassification() != null)) {
+        //            List<Edge> outgoingEdgesInitialVertex = getOutgoingEdges(initialVertex)
+        //                    .stream()
+        //                    .sorted(Comparator.comparingInt(edge -> edge.getDestiny().getId()))
+        //                    .toList();
+        //            if (outgoingEdges.stream().allMatch(edge -> edge.getClassification() != null))
+        //                return;
+        //        }
     }
 
-    private Edge getCurrentEdge(Vertex vertex, List<Edge> outgoingEdges) {
-        for (Edge edge : outgoingEdges)
+    /**
+     * Classifica uma aresta do grafo
+     *
+     * @param vertex         vertice do grafo
+     * @param outgoingEdges  lista de sucessores do vertice
+     * @param classification classificacao da aresta
+     */
+    private void classifyEdge(Vertex vertex, List<Edge> outgoingEdges, String classification) {
+        outgoingEdges.forEach(edge -> {
             if (edge.getDestiny().getId() == vertex.getId())
-                return edge;
-
-        return null;
+                edge.setClassification(classification);
+        });
     }
 
+    /**
+     * Obtem lista de sucessores de um determinado vertice
+     *
+     * @param vertex vertice do grafo
+     * @return lista de sucessores de um determinado vertice
+     */
     private List<Edge> getOutgoingEdges(Vertex vertex) {
 
         List<Edge> outgoingEdges = new ArrayList<>();

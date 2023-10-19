@@ -10,9 +10,8 @@ import java.util.List;
 
 public class GraphUtil {
 
-    public static void buildGraph(List<Vertex> vertices, List<Edge> edges) throws IOException {
+    public static void buildGraph(List<Vertex> vertices, List<Edge> edges, String filepath) throws IOException {
 
-        String filepath = "graphs/graph-test-100.txt";
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filepath));
         String input = bufferedReader.readLine(); // Descarta linha inicial
 
