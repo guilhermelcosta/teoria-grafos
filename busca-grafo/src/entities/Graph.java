@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 public class Graph {
 
@@ -78,7 +79,7 @@ public class Graph {
 
         for (int i = 1; i < vertices.length - 1; i++)
             if (startTime[vertices[i].getId()] == 0)
-                dfs(t, startTime, endTime, vertices[i]);
+                dfsStack(t, startTime, endTime, vertices[i]);
     }
 
     /**
@@ -90,7 +91,7 @@ public class Graph {
      * @param endTime   array com o tempo de termino de cada vertice
      * @param vertex    raiz da busca
      */
-    private void dfs(int t, int[] startTime, int[] endTime, Vertex vertex) {
+    private void dfsRecursive(int t, int[] startTime, int[] endTime, Vertex vertex) {
 
         startTime[vertex.getId()] = ++t;
 
@@ -101,7 +102,7 @@ public class Graph {
         for (Vertex w : vertexSuccessors) {
             if (startTime[w.getId()] == 0) {
                 classifyEdge(w, outgoingEdges, "Arvore");
-                dfs(t, startTime, endTime, w);
+                dfsRecursive(t, startTime, endTime, w);
             } else if (endTime[w.getId()] == 0)
                 classifyEdge(w, outgoingEdges, "Retorno");
             else if (startTime[vertex.getId()] < endTime[w.getId()])
@@ -111,6 +112,45 @@ public class Graph {
 
         }
         endTime[vertex.getId()] = ++t;
+    }
+
+    /**
+     * Busca em profundidade (algoritmo de busca)
+     * Nessa abordagem, ajustei o codigo para, em vez de fazer chamadas recursivas, empilhar os vertices a serem buscados
+     *
+     * @param t             tempo
+     * @param startTime     array com o tempo de inicio de cada vertice
+     * @param endTime       array com o tempo de termino de cada vertice
+     * @param initialVertex raiz da busca
+     */
+    private void dfsStack(int t, int[] startTime, int[] endTime, Vertex initialVertex) {
+
+        Stack<Vertex> stack = new Stack<>();
+        stack.push(initialVertex);
+
+        while (!stack.isEmpty()) {
+            Vertex vertex = stack.pop();
+            if (startTime[vertex.getId()] == 0) {
+
+                startTime[vertex.getId()] = ++t;
+
+                Edge[] outgoingEdges = getOutgoingEdges(vertex);
+                sortArray(outgoingEdges);
+
+                for (Vertex w : getVertexSuccessors(outgoingEdges)) {
+                    if (startTime[w.getId()] == 0) {
+                        classifyEdge(w, outgoingEdges, "Arvore");
+                        stack.push(w);
+                    } else if (endTime[w.getId()] == 0)
+                        classifyEdge(w, outgoingEdges, "Retorno");
+                    else if (startTime[vertex.getId()] < endTime[w.getId()])
+                        classifyEdge(w, outgoingEdges, "Avanco");
+                    else
+                        classifyEdge(w, outgoingEdges, "Cruzamento");
+                }
+            }
+            endTime[vertex.getId()] = ++t;
+        }
     }
 
     /**
