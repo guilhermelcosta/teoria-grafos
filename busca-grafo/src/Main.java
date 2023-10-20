@@ -1,11 +1,7 @@
-import entities.Edge;
 import entities.Graph;
-import entities.Vertex;
 import utils.GraphUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -19,23 +15,19 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         Scanner scanner = new Scanner(System.in);
-        List<Vertex> vertices = new ArrayList<>();
-        List<Edge> edges = new ArrayList<>();
-
-        GraphUtil.buildGraph(vertices, edges, "graphs/graph-test-100.txt");
-        Graph graph = new Graph(vertices, edges);
+        Graph graph = GraphUtil.buildGraph("graphs/graph-test-100.txt");
+        long start = System.currentTimeMillis();
         graph.dfs();
 
+        System.out.println("Tempo de execucao -> " + (System.currentTimeMillis() - start) + "ms");
         System.out.print("Digite o vértice para verificar classificação de suas arestas divergentes: ");
         int id = scanner.nextInt();
+        int[] pointer = graph.getPointer();
+        int startingPosition = pointer[id];
+        int lastPosition = pointer[id + 1];
 
-        graph.getEdges().forEach(edge -> {
-            if (edge.getOrigin().getId() == id) {
-                System.out.println();
-                System.out.println("Origem: " + edge.getOrigin().getId());
-                System.out.println("Destino: " + edge.getDestiny().getId());
-                System.out.println("Classificacao: " + edge.getClassification());
-            }
-        });
+        for (int i = startingPosition; i < lastPosition; i++)
+            graph.getEdges()[i].print();
+
     }
 }

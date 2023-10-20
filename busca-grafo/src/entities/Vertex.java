@@ -4,6 +4,11 @@ public class Vertex {
 
     private int id;
 
+    /**
+     * Construtor padrao do vertice
+     *
+     * @param id id do vertice
+     */
     public Vertex(int id) {
         this.id = id;
     }

@@ -39,6 +39,16 @@ public class Edge {
         this.classification = null;
     }
 
+    /**
+     * Imprime as informacoes da aresta
+     */
+    public void print() {
+        System.out.println();
+        System.out.println("Origem       : " + origin.getId());
+        System.out.println("Destino      : " + destiny.getId());
+        System.out.println("Classificacao: " + classification);
+    }
+
     public Vertex getOrigin() {
         return origin;
     }
