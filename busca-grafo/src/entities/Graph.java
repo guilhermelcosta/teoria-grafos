@@ -1,7 +1,6 @@
 package entities;
 
 import java.util.Arrays;
-import java.util.Stack;
 
 public class Graph {
 
@@ -79,7 +78,7 @@ public class Graph {
 
         for (int i = 1; i < vertices.length - 1; i++)
             if (startTime[vertices[i].getId()] == 0)
-                dfsStack(t, startTime, endTime, vertices[i]);
+                depthFirstSearch(t, startTime, endTime, vertices[i]);
     }
 
     /**
@@ -109,13 +108,14 @@ public class Graph {
                 classifyEdge(w, outgoingEdges, "Avanco");
             else
                 classifyEdge(w, outgoingEdges, "Cruzamento");
-
         }
         endTime[vertex.getId()] = ++t;
     }
 
     /**
      * Ordena um array lexicograficamente
+     * Durante os meus testes, percebi que utilizar estruturas convencionais como Arrays.sort() eram mais pesadas
+     * do que um metodo a parte
      *
      * @param outgoingEdges array de vizinhos do vertice
      */
