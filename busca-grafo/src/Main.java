@@ -17,7 +17,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Graph graph = GraphUtil.buildGraph("graphs/graph-test-100.txt");
         long start = System.currentTimeMillis();
-        graph.dfs();
+        graph.depthFirstSearch();
 
         System.out.println("Tempo de execucao -> " + (System.currentTimeMillis() - start) + "ms");
         System.out.print("Digite o vértice para verificar classificação de suas arestas divergentes: ");
