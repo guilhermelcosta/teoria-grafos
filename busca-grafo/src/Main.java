@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         Scanner scanner = new Scanner(System.in);
-        Graph graph = GraphUtil.buildGraph("graphs/graph-test-100.txt");
+        Graph graph = GraphUtil.buildGraph("graphs/graph-test-50000.txt");
         long start = System.currentTimeMillis();
 
         /*
