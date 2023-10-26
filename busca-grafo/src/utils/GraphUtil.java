@@ -38,7 +38,7 @@ public class GraphUtil {
 
             edges[edgePos++] = new Edge(origin, destiny);
         }
-        System.out.println("Grafo construido!");
+        System.out.println("Grafo construido! \n---");
         return new Graph(vertices, edges);
     }
 
