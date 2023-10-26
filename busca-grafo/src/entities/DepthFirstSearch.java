@@ -28,7 +28,7 @@ public class DepthFirstSearch {
                     recursiveDepthFirstSearch(t, startTime, endTime, vertices[i], graph);
                 } else {
                     System.out.println("Chamada iterativa \n---");
-                    iterativedepthFirstSearch(t, startTime, endTime, vertices[i], graph);
+                    iterativeDepthFirstSearch(t, startTime, endTime, vertices[i], graph);
                 }
             }
     }
@@ -75,7 +75,7 @@ public class DepthFirstSearch {
      * @param endTime   array com o tempo de termino de cada vertice
      * @param vertex    raiz da busca
      */
-    private static void iterativedepthFirstSearch(int t, int[] startTime, int[] endTime, Vertex vertex, Graph graph) {
+    private static void iterativeDepthFirstSearch(int t, int[] startTime, int[] endTime, Vertex vertex, Graph graph) {
 
         boolean[] marked = new boolean[graph.getVertices().length];
         boolean[] finished = new boolean[graph.getVertices().length];
